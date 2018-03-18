@@ -8,8 +8,13 @@ jobs:
       - run:
         name: update-npm
         command: 'sudo npm install -g npm@latest'
-    - restore_cache:
+      - restore_cache:
         key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+        name: "Checking Versions"
+        command: |
+          node --version
+          npm --version
       - run:
           name: Install Npm packages
           command: npm install
