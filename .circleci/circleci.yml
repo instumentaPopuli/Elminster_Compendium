@@ -2,37 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8.9
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run:
-        name: update-npm
-        command: 'sudo npm install -g npm@latest'
-      - run:
-        name: "Checking Versions"
-        command: |
-          node --version
-          npm --version
-      - run:
-          name: Install Npm packages
-          command: npm install
-      - run: yarn prod-build
-  deploy-job:
+      - run: echo "A first hello"
+  build:
     docker:
-      - image: circleci/node:7.10
-        working_directory: /tmp/my-project
+      - image: circleci/ruby:2.4.1
     steps:
-      - run:
-          name: Deploy Master to Firebase
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
-workflows:
-  version: 2
-  build_and_deploy:
-    jobs:
-      - build
-      - deploy-job:
-        requires:
-          - build
-        filters:
-        branches:
-          only: master
+      - checkout
+      - run: echo "A first hello"
