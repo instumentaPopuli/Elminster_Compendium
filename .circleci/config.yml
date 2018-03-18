@@ -1,12 +1,12 @@
 version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/node:7.10
-    steps:
-      - checkout: ~/repo
-      - run: yarn install
-      - run: yarn prod-build
+  jobs:
+    build:
+      docker:
+        - image: circleci/node:7.10
+      steps:
+        - checkout: ~/repo
+        - run: yarn install
+        - run: yarn prod-build
 
   # deploy-job:
   #   docker:
