@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Install Npm packages
-          command: yarn install
+          command: npm install
             paths:
               - node_modules
       - run: yarn prod-build
