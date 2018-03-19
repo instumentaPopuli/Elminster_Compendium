@@ -14,12 +14,14 @@ jobs:
             node --version
             npm --version
       - run:
-            name: Install Npm packages
-            command: npm install
-      - run: yarn prod-build
+          name: Install Npm packages
+          command: npm install
       - run:
-        name: Deploy Master to Firebase
-        command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+          name: Build with yarn
+          command: yarn prod-build
+      - run:
+          name: Deploy Master to Firebase
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 #   deploy-job:
 #     docker:
 #       - image: circleci/node:8.9
