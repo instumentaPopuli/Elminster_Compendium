@@ -6,16 +6,16 @@ jobs:
     steps:
       - checkout
       - run:
-        name: update-npm
-        command: 'sudo npm install -g npm@latest'
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
       - run:
-        name: "Checking Versions"
-        command: |
-          node --version
-          npm --version
+          name: "Checking Versions"
+          command: |
+            node --version
+            npm --version
       - run:
-          name: Install Npm packages
-          command: npm install
+            name: Install Npm packages
+            command: npm install
       - run: yarn prod-build
   deploy-job:
     docker:
@@ -23,8 +23,8 @@ jobs:
         working_directory: /tmp/my-project
     steps:
       - run:
-          name: Deploy Master to Firebase
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+            name: Deploy Master to Firebase
+            command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 workflows:
   version: 2
   build_and_deploy:
